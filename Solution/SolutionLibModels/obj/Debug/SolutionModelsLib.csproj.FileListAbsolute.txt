@@ -1,0 +1,13 @@
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\SolutionModelsLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\SolutionModelsLib.pdb
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\System.Data.SQLite.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\TreeLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\System.Data.SQLite.xml
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\TreeLib.pdb
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\bin\Debug\TreeLib.xml
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\obj\Debug\SolutionModelsLib.csprojAssemblyReference.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\obj\Debug\SolutionModelsLib.csproj.CoreCompileInputs.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\obj\Debug\SolutionModelsLib.csproj.CopyComplete
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\obj\Debug\SolutionModelsLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Solution\SolutionLibModels\obj\Debug\SolutionModelsLib.pdb

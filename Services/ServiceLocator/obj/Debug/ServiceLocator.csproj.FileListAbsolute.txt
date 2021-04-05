@@ -1,0 +1,9 @@
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\bin\Debug\ServiceLocator.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\bin\Debug\ServiceLocator.pdb
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\bin\Debug\ExplorerLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\bin\Debug\ExplorerLib.pdb
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\obj\Debug\ServiceLocator.csprojAssemblyReference.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\obj\Debug\ServiceLocator.csproj.CoreCompileInputs.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\obj\Debug\ServiceLocator.csproj.CopyComplete
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\obj\Debug\ServiceLocator.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ServiceLocator\obj\Debug\ServiceLocator.pdb

@@ -1,0 +1,1187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SolutionLib</name>
+    </assembly>
+    <members>
+        <member name="T:SolutionLib.Converters.InvertedBooleanToVisibilityConverter">
+            <summary>
+            XAML converter to convert <seealso cref="T:System.Boolean"/> values
+            into <seealso cref="T:System.Windows.Visibility"/> output values.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Converters.InvertedBooleanToVisibilityConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Converters.InvertedBooleanToVisibilityConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.Converters.ISolutionBaseItemToImageConverter">
+            <summary>
+            XAML converter to convert <seealso cref="T:SolutionLib.Models.SolutionItemType"/> enum members
+            into <seealso cref="T:System.Windows.Media.ImageSource"/> from ResourceDictionary or fallback from
+            static resource.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Converters.ISolutionBaseItemToImageConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Converters.ISolutionBaseItemToImageConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Converters.ISolutionBaseItemToImageConverter.GetImage(SolutionLib.Models.SolutionItemType,System.Boolean)">
+            <summary>
+            Get a DynamicResource from ResourceDictionary or a static ImageSource (as fallback) for not expanded folder item.
+            </summary>
+            <param name="itemType"></param>
+            <param name="isItemExpanded"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IFile">
+            <summary>
+            Реализует интерфейс к модели представления файлового элемента в
+            коллекции элементов с древовидной структурой. Типы элементов
+            коллекции можно различать с помощью: 
+            1) интерфейса (например, для выбора шаблона в ItemTemplateSelector "/>
+            или для использования в HierarchicalDataTemplate ./>, или 
+            2) перечисления в <см. Cref =" SolutionLib. Models.SolutionItemType "/>.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IFolder">
+            <summary>
+            Implements an interface to a viewmodel of a folder item in
+            a tree structured collection of items.
+            
+            Types of collection items can be distinguished via the:
+            1) an interface
+               (eg. to select a template in an ItemTemplateSelector or
+               for usage in an HierarchicalDataTemplate,
+               
+            or
+            
+            2) thrpigh enumeration in <see cref="T:SolutionLib.Models.SolutionItemType"/>.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IViewModelBase">
+            <summary>
+            Этот интерфейс предоставляет базовый интерфейс для всех элементов решения,
+            включая корневой элемент, все элементы ниже него и корневой элемент решения.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IProject">
+            <summary>
+            Implements an interface to a viewmodel of a project item in
+            a tree structured collection of items.
+            
+            Types of collection items can be distinguished via the:
+            1) an interface
+               (eg. to select a template in an ItemTemplateSelector or
+               for usage in an HierarchicalDataTemplate,
+               
+            or
+            
+            2) thrpigh enumeration in <see cref="T:SolutionLib.Models.SolutionItemType"/>.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IItem">
+            <summary>
+            Определяет свойства и члены всех объектов, отображаемых в решении.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.ItemType">
+            <summary>
+            Получает уникальное техническое имя для 
+            идентификации элемента и управления элементами в коллекции.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.DisplayName">
+            <summary>
+            Получает имя для отображения в пользовательском интерфейсе.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.Description">
+            <summary>
+            Получает описание элемента - для использования во всплывающей подсказке и т. Д.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.IsItemExpanded">
+            <summary>
+            Получает / задает, развернут ли этот элемент древовидной структуры.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.IsItemSelected">
+             <summary>
+            Получает / задает, выбран ли этот элемент древовидного представления.
+             </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.IsReadOnly">
+            <summary>
+            Получает, может ли пользователь редактировать
+            <see cref="P:SolutionLib.Interfaces.IItem.DisplayName"/> этого элемента дерева.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItem.SortKey">
+            <summary>
+            Получает/задает строку, определяющую порядок отображения элементов.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.SetDisplayName(System.String)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.Interfaces.IItem.DisplayName" />.
+            </summary>
+            <param name="displayName"></param>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.SetDescription(System.String)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.Interfaces.IItem.Description" />.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.SetIsReadOnly(System.Boolean)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.Interfaces.IItem.IsReadOnly" />.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.SetParent(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Устанавливает объект свойства Parent, где этот
+            объект является дочерним в древовидном представлении.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.SetId(System.Int64)">
+            <summary>
+            Sets the ID of an item in the collection.
+            </summary>
+            <param name="itemId"></param>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.GetId">
+            <summary>
+            Устанавливает ID элемента в коллекции.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.RequestEditMode(InplaceEditBoxLib.Events.RequestEditEvent)">
+            <summary>
+            Вызовите этот метод, чтобы запросить запуск режима редактирования для переименования этого элемента.
+            </summary>
+            <param name="request"></param>
+            <returns>Возвращает истину, если событие было успешно отправлено (слушатель прикреплен), в противном случае - ложь</returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItem.ShowNotification(System.String,System.String,System.Windows.Media.Imaging.BitmapImage)">
+            <summary>
+            Показывает всплывающее уведомление с заданным заголовком и текстом.
+            </summary>
+            <param name="title"></param>
+            <param name="message"></param>
+            <param name="imageIcon"></param>
+            <returns>true, если событие было успешно запущено.</returns>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IItemChildren">
+            <summary>
+            Реализует базовый класс для определенного типа элемента коллекции, который может 
+            иметь дочерние элементы, и предоставляет функции для управления коллекцией дочерних
+            элементов (удаление, переименование, добавление дочернего элемента и т.д.)
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IItemChildren.Children">
+            <summary>
+            Получает все дочерние элементы этого (родительского) элемента.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.FindChild(System.String)">
+            <summary>
+            Находит дочерний элемент по заданному ключу или возвращает null.
+            </summary>
+            <param name="displyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.SuggestNextChildName(SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавление нового следующего дочернего элемента через Inplace Edit Box
+            требует, чтобы мы знали, является ли «Новая папка», «Новая папка 1», 
+            «Новая папка 2» ... следующим подходящим именем - этот метод определяет
+            это имя и возвращает его для заданный тип (создаваемого) дочернего элемента.
+            </summary>
+            <param name="nextTypeTpAdd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.AddChild(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Добавляет дочерний элемент типа <see cref = "T:SolutionLib.Interfaces.IItem" /> к этому
+            родительскому элементу, который также можно ввести с помощью <see cref = "T:SolutionLib.Interfaces.IItem" />.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.AddChild(System.String,SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавляет дочерний элемент с заданным типом 
+            (здесь нельзя добавить <see cref = "T:SolutionLib.Models.SolutionItemType" />).
+            </summary>
+            <param name="displayName"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.RemoveChild(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Удаляет дочерний элемент из коллекции дочерних элементов этого элемента.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.RenameChild(SolutionLib.Interfaces.IItem,System.String)">
+            <summary>
+            Переименовывает дочерний элемент в коллекцию дочерних элементов этого элемента.
+            После переименования следует применить повторную сортировку и IsItemSelected,
+            чтобы переименованный объект снова появился в правильной позиции в отсортированном списке элементов.
+            </summary>
+            <param name="item"></param>
+            <param name="newName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.RemoveAllChild">
+            <summary>
+            Удаляет всех дочерних элементов (если есть) ниже этого элемента.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.SortChildren">
+            <summary>
+            Сортирует все элементы для отображения в отсортированном виде.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.AddFolder(System.String)">
+            <summary>
+            Добавляет другой элемент папки (дочерний) в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.AddProject(System.String)">
+            <summary>
+            Добавляет другой проект (дочерний) элемент в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.IItemChildren.AddFile(System.String)">
+            <summary>
+            Добавляет другой файл (дочерний) элемент в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.Interfaces.ISolution">
+            <summary>
+            Корень решения - это класс, в котором размещены все другие элементы, связанные с
+            решением. Даже SolutionRootItem, который является частью отображаемой коллекции,
+            размещается в коллекции ниже.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.Root">
+            <summary>
+            Получает корень древовидной структуры. То есть в ObservableCollection
+            есть только 1 элемент, и этот элемент является корневым.
+            
+            Свойство Children этого <see cref="T:SolutionLib.Interfaces.IItemChildren"/>
+            представляет остальную часть дерева.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.RenameCommand">
+            <summary>
+            Получает команду, которая переименовывает элемент, представленный этой моделью
+            просмотра. Эта команда должна вызываться непосредственно реализующим представлением,
+            поскольку новое имя элемента доставляется в виде строки с самим элементом в качестве
+            второго параметра через привязку через свойство зависимостей RenameCommandParameter.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.SelectedItem">
+            <summary>
+            Получает текущий выбранный элемент из коллекции элементов дерева.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.SelectionChangedCommand">
+            <summary>
+            Получает команду, которая изменяет текущий <see cref="P:SolutionLib.Interfaces.ISolution.SelectedItem"/>
+            на элемент, который предоставляется как параметр <see cref="T:SolutionLib.Interfaces.IItem"/>
+            этой команды.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.SolutionFileFilter">
+            <summary>
+            Получает фильтр файлов, который применяется, когда пользователь открывает
+            диалоговое окно сохранения/загрузки для сохранения/загрузки содержимого
+            древовидного представления решения.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.ISolution.SolutionFileFilterDefault">
+            <summary>
+            Получает фильтр файлов по умолчанию, который применяется, когда пользователь
+            открывает диалоговое окно сохранения / загрузки для сохранения / загрузки 
+            содержимого древовидного представления решения в первый раз.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolution.GetRootItem">
+            <summary>
+            Возвращает первый видимый элемент в древовидной структуре (если есть) или null.
+            Этот метод представляет собой удобную оболочку, которая разворачивает свойство 
+            <see cref="P:SolutionLib.Interfaces.ISolution.Root"/>, поскольку модель просмотра всегда поддерживает только ОДИН корень.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolution.AddSolutionRootItem(System.String)">
+            <summary>
+            Добавляет корень решения в коллекцию элементов решения. Будьте осторожны (!),
+            Так как текущий корневой элемент (если есть) отбрасывается вместе со всеми его
+            дочерними элементами, поскольку модель просмотра всегда поддерживает только ОДИН корень.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolution.AddRootChild(System.String,SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавляет еще один дочерний элемент ниже корневого элемента
+            в коллекцию. Это вызовет исключение, если родительский элемент равен нулю.
+            </summary>
+            <param name="itemName"></param>
+            <param name="itemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolution.AddChild(System.String,SolutionLib.Models.SolutionItemType,SolutionLib.Interfaces.IItemChildren)">
+            <summary>
+            Добавляет другой файловый (дочерний) элемент под родительским элементом.
+            Это вызовет исключение, если родительский элемент равен нулю.
+            </summary>
+            <param name="itemName"></param>
+            <param name="parent"></param>
+            <param name="itemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolution.ResetToDefaults">
+            <summary>
+            Resets all viewmodel items to initial states of construction time.
+            Сбросить все модели представления элементов в первоначальное состояние, определяемое конструктором.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Interfaces.ISolutionRootItem">
+            <summary>
+            Implements an interface for a viewmodel class of the first visible item in the treeview.
+            Normally, there is only one root in any given tree - so this class implements
+            that one item visually representing that root (eg.: Computer item in Windows Explorer).
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Interfaces.ISolutionRootItem.RenameRootItem(System.String)">
+            <summary>
+            Rename the display item of the root item.
+            </summary>
+            <param name="newName"></param>
+        </member>
+        <member name="T:SolutionLib.Interfaces.IParent">
+            <summary>
+            Моделирует интерфейсы для элемента, который может
+            определить, является ли он родительским (есть ли у него родительский элемент или нет).
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Interfaces.IParent.Parent">
+            <summary>
+            Получает родительский объект, в котором этот объект является дочерним в древовидном представлении.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Models.SolutionItemType">
+            <summary>
+            Определяет типизированный идентификатор элемента в решении.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.Models.SolutionItemType.SolutionRootItem">
+            <summary>
+            Представляет корень элементов в дереве решения.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.Models.SolutionItemType.File">
+            <summary>
+            Общий файл.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.Models.SolutionItemType.Folder">
+            <summary>
+            Папка общего решения.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.Models.SolutionItemType.Project">
+            <summary>
+            Общий проект.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:SolutionLib.Factory">
+            <summary>
+            Содержит методы для создания библиотечных объектов, которые доступны только через интерфейс.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Factory.RootViewModel">
+            <summary>
+            Получает корень объекта модели представления дерева решений. 
+            Используйте функции, доступные ниже <see cref = "T:SolutionLib.Interfaces.ISolution" />,
+            чтобы управлять элементами в этом дереве.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel">
+            <summary>
+            Реализует базовую функциональность для всех элементов, которые, в свою
+            очередь, могут иметь коллекции <see cref = "P:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.Children" /> (обычно
+            привязанные к ItemSource в Treeview или HierarchicalDataTemplate).
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.#ctor(SolutionLib.Interfaces.IItem,SolutionLib.Models.SolutionItemType,System.Boolean)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="parent"></param>
+            <param name="itemType"></param>
+            <param name="addDummyChild"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.#ctor">
+            <summary>
+            Конструктор скрытого класса может использоваться только для
+            создания экземпляра статического элемента <see cref = "F:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.DummyChild" />.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.Children">
+            <summary>
+            Получает отсортированную коллекцию дочерних элементов, которые могут
+            быть извлеченным из этого родительского элемента.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.FindChild(System.String)">
+            <summary>
+            Находит дочерний элемент по заданному ключу или возвращает null.
+            </summary>
+            <param name="displyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.SuggestNextChildName(SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавление нового следующего дочернего элемента через поле редактирования
+            на месте требует, чтобы мы знали, является ли «Новая папка», «Новая папка 1»,
+            «Новая папка 2» ... следующим подходящим именем - этот метод определяет это
+            имя и возвращает его для данного типа (создаваемого) дочернего элемента.
+            </summary>
+            <param name="nextTypeTpAdd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.AddChild(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Добавляет дочерний элемент типа <see cref="T:SolutionLib.Interfaces.IItem"/> к этому
+            родительскому элементу, который также можно ввести с помощью <see cref="T:SolutionLib.Interfaces.IItem"/>.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.AddChild(System.String,SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавляет дочерний элемент с заданным типом 
+            (здесь нельзя добавить <see cref = "F:SolutionLib.Models.SolutionItemType.SolutionRootItem" />).
+            </summary>
+            <param name="displayName"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.RemoveChild(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Удаляет дочерний элемент из коллекции дочерних элементов этого элемента.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.RenameChild(SolutionLib.Interfaces.IItem,System.String)">
+            <summary>
+            Переименовывает дочерний элемент в коллекции дочерних элементов этого элемента.
+            После переименования следует применить повторную сортировку и IsItemSelected,
+            чтобы переименованный элемент снова появился в правильной позиции в отсортированном списке элементов.
+            </summary>
+            <param name="item"></param>
+            <param name="newName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.RemoveAllChild">
+            <summary>
+            Удаляет всех дочерних элементов (если есть) ниже этого элемента.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.SortChildren">
+            <summary>
+            Сортирует все элементы для отображения в отсортированном виде.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.SolutionLib#Interfaces#IItemChildren#AddFolder(System.String)">
+            <summary>
+            Добавляет другой элемент папки (дочерний) в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.SolutionLib#Interfaces#IItemChildren#AddProject(System.String)">
+            <summary>
+            Добавляет другой проект (дочерний) элемент в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.SolutionLib#Interfaces#IItemChildren#AddFile(System.String)">
+            <summary>
+            Добавляет другой файловый (дочерний) элемент в данную коллекцию элементов.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemChildrenViewModel.AddChild(System.String,SolutionLib.Interfaces.IItem)">
+            <summary>
+            Добавляет дочерний элемент типа <see cref = "T:SolutionLib.Interfaces.IItem" /> к этому
+            родительскому элементу, который также можно ввести с помощью <see cref = "T:SolutionLib.Interfaces.IItem" />.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Browser.Base.ItemViewModel">
+            <summary>
+            Реализует базовые функции для всех элементов древовидного представления,
+            которые НЕ связаны с управлением дочерними коллекциями. Функциональные
+            возможности этого базового класса сосредоточены на самом элементе
+            (а не на его дочерних элементах). Дизайн нацелен на реализацию элементов,
+            таких как файлы, которые могут даже не иметь дочерних элементов.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.#ctor(SolutionLib.Interfaces.IItem,SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.#ctor">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="E:SolutionLib.ViewModels.Browser.Base.ItemViewModel.ShowNotificationMessage">
+            <summary>
+            Предоставьте событие, которое запускается, когда модель просмотра 
+            сообщает свое представление: Вот еще одно сообщение с уведомлением,
+            пожалуйста, покажите его пользователю.
+            </summary>
+        </member>
+        <member name="E:SolutionLib.ViewModels.Browser.Base.ItemViewModel.RequestEdit">
+            <summary>
+            Предоставьте событие, которое запускается, когда модель просмотра запрашивает
+            у своего представления запуск режима редактирования для переименования этого элемента.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.ItemType">
+            <summary>
+            Получает перечислимый тип элемента в решении.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.DisplayName">
+            <summary>
+            Получает имя этого элемента, которое будет отображаться в пользовательском интерфейсе.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.Description">
+            <summary>
+            Получает описание этого элемента для отображения в пользовательском интерфейсе.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.IsItemExpanded">
+            <summary>
+            Получает / задает, развернут ли этот элемент древовидной структуры.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.IsItemSelected">
+            <summary>
+            Получает / устанавливает, выбран ли этот элемент древовидного представления.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.IsReadOnly">
+            <summary>
+            Получает / задает, может ли пользователь переименовать 
+            <see cref = "P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.DisplayName" /> этого элемента древовидного представления.
+            
+            Это свойство является частью интерфейса 
+            <see cref = "T:InplaceEditBoxLib.Interfaces.IEditBox" />, поэтому его не следует переименовывать.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.Parent">
+            <summary>
+            Получает родительский объект, в котором этот объект является дочерним в древовидном представлении.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SortKey">
+            <summary>
+            Получает / задает строку, определяющую порядок отображения элементов.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SetDisplayName(System.String)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.DisplayName" />.
+            </summary>
+            <param name="displayName"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SetDescription(System.String)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.Description" />.
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SetIsReadOnly(System.Boolean)">
+            <summary>
+            Устанавливает значение свойства <seealso cref = "P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.IsReadOnly" />.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SetParent(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Устанавливает объект свойства <see cref = "P:SolutionLib.ViewModels.Browser.Base.ItemViewModel.Parent" />,
+            где этот объект является дочерним в древовидном представлении.
+            </summary>
+            <param name="parent"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SolutionLib#Interfaces#IItem#SetId(System.Int64)">
+            <summary>
+            Устанавливает идентификатор элемента в коллекции.
+            </summary>
+            <param name="itemId"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.SolutionLib#Interfaces#IItem#GetId">
+            <summary>
+            Получает идентификатор элемента в коллекции.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.RequestEditMode(InplaceEditBoxLib.Events.RequestEditEvent)">
+            <summary>
+            Вызовите этот метод, чтобы запросить запуск режима редактирования
+            для переименования этого элемента.
+            </summary>
+            <param name="request"></param>
+            <returns>Возвращает true, если событие было успешно отправлено (слушатель прикреплен), в противном случае - false.</returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.Base.ItemViewModel.ShowNotification(System.String,System.String,System.Windows.Media.Imaging.BitmapImage)">
+            <summary>
+            Показывает всплывающее уведомление с заданным заголовком и текстом.
+            </summary>
+            <param name="title"></param>
+            <param name="message"></param>
+            <param name="imageIcon"></param>
+            <returns>true, если событие было успешно запущено</returns>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Browser.FileViewModel">
+            <summary>
+            Implements a viewmodel for file items in a tree structured viewmodel collection.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.FileViewModel.#ctor(SolutionLib.Interfaces.IItem,System.String)">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.FileViewModel.#ctor">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.FolderViewModel.#ctor(SolutionLib.Interfaces.IItem,System.String,System.Boolean)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="parent"></param>
+            <param name="displayName"></param>
+            <param name="addDummyChild"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.FolderViewModel.#ctor">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.ProjectViewModel.#ctor(SolutionLib.Interfaces.IItem,System.String,System.Boolean)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="parent"></param>
+            <param name="displayName"></param>
+            <param name="addDummyChild"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.ProjectViewModel.#ctor">
+            <summary>
+            Стандартный конструктор класса
+            </summary>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Browser.SolutionRootItemViewModel">
+            <summary>
+            Реализует класс модели просмотра для первого видимого элемента в древовидной структуре.
+            Обычно в любом дереве есть только один корень, поэтому этот класс реализует этот один
+            элемент, визуально представляющий этот корень (например: элемент «Компьютер» в проводнике Windows).
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionRootItemViewModel.#ctor(SolutionLib.Interfaces.IItem,System.String,System.Boolean)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="displayName"></param>
+            <param name="parent"></param>
+            <param name="addDummyChild"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionRootItemViewModel.#ctor">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionRootItemViewModel.RenameRootItem(System.String)">
+            <summary>
+            Переименуйте элемент отображения корневого элемента.
+            </summary>
+            <param name="newName"></param>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Browser.SolutionViewModel">
+            <summary>
+            Корень решения - это модель просмотра, в которой размещены все другие элементы,
+            связанные с решением. Даже SolutionRootItem, который является частью отображаемой
+            коллекции, размещается в коллекции ниже.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.ViewModels.Browser.SolutionViewModel.fileExtensions">
+            <summary>
+            Получает расширения файлов, которые можно использовать для загрузки или сохранения
+            данных древовидного представления в Xml или SQLite.
+            </summary>
+        </member>
+        <member name="F:SolutionLib.ViewModels.Browser.SolutionViewModel.fileExtensionDescripts">
+            <summary>
+            Получает удобочитаемое описание для каждого расширения файла, которое
+            можно использовать для загрузки или сохранения данных древовидного представления в Xml или SQLite.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.#ctor">
+            <summary>
+            Конструктор класса
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.Root">
+            <summary>
+            Получает корень древовидной структуры. То есть в 
+            ObservableCollection есть только 1 элемент, и этот элемент является корневым.
+            
+            Свойство Children этого <see cref = "T:SolutionLib.Interfaces.IItemChildren" />
+            представляет остальную часть дерева.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.SolutionLib#Interfaces#ISolution#SolutionFileFilter">
+            <summary>
+            Получает фильтр файлов, который применяется, когда пользователь открывает
+            диалоговое окно сохранения / загрузки для сохранения / загрузки содержимого
+            древовидного представления решения.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.SolutionLib#Interfaces#ISolution#SolutionFileFilterDefault">
+            <summary>
+            Получает фильтр файлов по умолчанию, который применяется, когда пользователь
+            открывает диалоговое окно сохранения / загрузки для сохранения / загрузки 
+            содержимого древовидного представления решения в первый раз.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.ItemAddCommand">
+            <summary>
+            Получает команду, которая добавляет новый элемент в древовидную структуру.
+            
+            Параметр - это кортеж с <see cref = "T:SolutionLib.Interfaces.IItemChildren" />, который является
+            родительским элементом для создаваемого элемента, и 
+            <see cref = "T:SolutionLib.Models.SolutionItemType" />, который является типом дочернего
+            элемента, который должен быть добавлен сюда.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.ItemRemoveCommand">
+            <summary>
+            Получает команду, удаляющую элемент из древовидной структуры.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.ItemRemoveAllCommand">
+            <summary>
+            Получает команду, которая удаляет все элементы ниже данного элемента.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.StartRenameCommand">
+            <summary>
+            Запускает процесс переименования папки, переименовывая папку,
+            представленную этой моделью просмотра.
+            
+            Эта команда реализует событие, которое запускает фактический процесс
+            переименования в подключенном представлении. Подключенное представление,
+            в свою очередь, вызывает <see cref = "P:SolutionLib.ViewModels.Browser.SolutionViewModel.RenameCommand" /> для фактического
+            переименования данных (если пользователь не отменил тем временем с помощью
+            клавиши ESC). Итак, переименование на самом деле состоит из 3 частей:
+            
+            1) ПускПереименование (может быть запущено ею или самим представлением)
+            2) Взаимодействие, при котором пользователь взаимодействует с представлением для редактирования строки
+            3) RenameCommand -> выполнить переименование в структуре данных и обновить коллекцию элементов
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.RenameCommand">
+            <summary>
+            Получает команду, которая переименовывает элемент, представленный этой моделью просмотра.
+            
+            Эта команда должна вызываться непосредственно реализующим представлением,
+            поскольку новое имя элемента доставляется в виде строки с самим элементом 
+            в качестве второго параметра через привязку через свойство зависимостей
+            RenameCommandParameter.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.ViewModels.Browser.SolutionViewModel.SelectedItem">
+            <summary>
+            Получает текущий выбранный элемент из коллекции элементов дерева.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.ResetToDefaults">
+            <summary>
+            Сбрасывает все элементы модели просмотра в исходное состояние времени построения.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.RenameItem(SolutionLib.Interfaces.IItem,System.String)">
+            <summary>
+            Переименовывает отображаемую строку в <paramref name = "solutionItem" />
+            в соответствии с запросом в <paramref name = "newDisplayName" />.
+            </summary>
+            <param name="solutionItem"></param>
+            <param name="newDisplayName"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.AddSolutionRootItem(System.String)">
+            <summary>
+            Добавляет корень решения в коллекцию элементов решения.
+            
+            Будьте осторожны (!), Поскольку текущий корневой элемент (если есть)
+            отбрасывается вместе со всеми его дочерними элементами, поскольку модель
+            просмотра всегда поддерживает только ОДИН корень.
+            </summary>
+            <param name="displayName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.AddRootChild(System.String,SolutionLib.Models.SolutionItemType)">
+            <summary>
+            Добавляет еще один дочерний элемент ниже корневого элемента
+            в коллекцию. Это вызовет исключение, если родительский элемент
+            равен нулю.
+            </summary>
+            <param name="itemName"></param>
+            <param name="itemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.AddChild(System.String,SolutionLib.Models.SolutionItemType,SolutionLib.Interfaces.IItemChildren)">
+            <summary>
+            Добавляет еще один файловый (дочерний) элемент под
+            родительским элементом. Это вызовет исключение, если
+            родительский элемент равен нулю.
+            </summary>
+            <param name="itemName"></param>
+            <param name="parent"></param>
+            <param name="itemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Browser.SolutionViewModel.GetRootItem">
+            <summary>
+            Возвращает первый видимый элемент в древовидной структуре (если есть) или null.
+            Этот метод представляет собой удобную оболочку, которая разворачивает свойство
+            <see cref = "P:SolutionLib.ViewModels.Browser.SolutionViewModel.Root" />, поскольку модель просмотра всегда поддерживает только ОДИН корень.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Collections.SortableObservableCollection`1">
+            <summary>
+            Source: https://stackoverflow.com/questions/5487927/expand-wpf-treeview-to-support-sorting
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.#ctor">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Class constructor
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.Sort``1(System.Func{`0,``0})">
+            <summary>
+            Сортирует элементы коллекции в порядке возрастания в соответствии с ключом.
+            </summary>
+            <typeparam name="TKey"> Тип ключа, возвращаемый <paramref name="keySelector"/>.</typeparam>
+            <param name="keySelector">Функция для извлечения ключа из элемента.</param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.SortDescending``1(System.Func{`0,``0})">
+            <summary>
+            Сортирует элементы коллекции в порядке убывания по ключу.
+            </summary>
+            <typeparam name="TKey"> Тип ключа, возвращаемый <paramref name="keySelector"/>.</typeparam>
+            <param name="keySelector">Функция для извлечения ключа из элемента.</param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.Sort``1(System.Func{`0,``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Сортирует элементы коллекции в порядке возрастания в соответствии с ключом.
+            </summary>
+            <typeparam name="TKey"> Тип ключа, возвращаемый <paramref name="keySelector"/>.</typeparam>
+            <param name="keySelector">Функция для извлечения ключа из элемента.</param>
+            <param name="comparer"><see Cref = "IComparer {T}" /> для сравнения ключей.</param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableCollection`1.InternalSort(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Перемещает элементы коллекции таким образом, чтобы их порядок совпадал с порядком предоставленных элементов.
+            </summary>
+            <param name="sortedItems"> <see cref="T:System.Collections.Generic.IEnumerable`1"/> для предоставления заказов на товары.</param>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection">
+            <summary>
+            Реализует настраиваемую наблюдаемую коллекцию, в которой могут размещаться 
+            элементы, набранные с помощью <see cref="T:SolutionLib.Models.SolutionItemType"/> - эти элементы
+            сортируются и сохраняются уникальными для повторного преобразования структуры,
+            аналогичной структуре обозревателя решений Visual Studio.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.#ctor">
+            <summary>
+            Class constructor.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.AddItem(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Добавляет новый элемент в коллекцию размещенных элементов.
+            Метод выдает исключение, если ключ нового элемента уже
+            присутствует в текущей коллекции.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.Add(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Добавляет новый элемент в коллекцию размещенных элементов.
+            Метод выдает исключение, если ключ нового элемента уже
+            присутствует в текущей коллекции.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.RemoveItem(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Удаляет элемент из коллекции размещенных элементов.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.Remove(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Удаляет элемент из коллекции размещенных элементов.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.Clear">
+            <summary>
+            Удаляет все элементы в коллекции.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.TryGet(System.String)">
+            <summary>
+            Пытается найти элемент во внутреннем словаре и возвращает его или
+            возвращает null, если элемент был недоступен.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.RenameItem(SolutionLib.Interfaces.IItem,System.String)">
+            <summary>
+            Переименовывает элемент в коллекции, а также настраивает его ключ
+            сортировки, чтобы убедиться, что переименованный элемент снова появляется на своем месте.
+            </summary>
+            <param name="item"></param>
+            <param name="newName"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.SortItems">
+            <summary>
+            Сортирует элементы в этой коллекции по запросу.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Collections.SortableObservableDictionaryCollection.GenSortKey(SolutionLib.Interfaces.IItem)">
+            <summary>
+            Метод сгенерирует ключ сортировки, подходящий для сортировки (не для уникальной идентификации элемента)
+            Сортирует позиции папок, файлов и проекта (что перед чем идет).
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Base.BaseViewModel">
+            <summary>
+            Каждый класс ViewModel требуется для реализации интерфейса INotifyPropertyChanged,
+            чтобы сообщать WPF об изменении свойства (например, при выполнении метода или установщика).
+            
+            Следовательно, метод PropertyChanged должен вызываться при изменении данных, потому что
+            соответствующие свойства могут или не могут быть привязаны к элементам графического интерфейса,
+            которые, в свою очередь, должны обновлять свое отображение.
+            
+            Метод PropertyChanged должен вызываться членами и свойствами класса, производного от этого класса.
+            Каждый вызов содержит имя свойства, которое необходимо обновить.
+            
+            BaseViewModel является производным от System.Windows.DependencyObject, чтобы позволить
+            результирующим ViewModel реализовать свойства зависимостей. Свойства зависимостей, в свою очередь,
+            полезны при работе с IValueConverter и ConverterParameters.
+            </summary>
+        </member>
+        <member name="E:SolutionLib.ViewModels.Base.BaseViewModel.PropertyChanged">
+            <summary>
+            Стандартный обработчик событий интерфейса <seealso cref = "T:System.ComponentModel.INotifyPropertyChanged" />.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.BaseViewModel.NotifyPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Сообщите связанным элементам управления (через привязку WPF), чтобы они обновляли их отображение.
+            
+            Пример вызова: this.NotifyPropertyChanged (() => this.IsSelected);
+            где "this" происходит от <seealso cref = "T:SolutionLib.ViewModels.Base.BaseViewModel" />
+            а IsSelected - это свойство.
+            </summary>
+            <typeparam name="TProperty"></typeparam>
+            <param name="property"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.BaseViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Сообщите связанным элементам управления (через привязку WPF), чтобы они обновляли их отображение.
+            
+            Пример вызова: this.OnPropertyChanged ("IsSelected");
+            где "this" происходит от <seealso cref = "T:SolutionLib.ViewModels.Base.BaseViewModel" />
+            а IsSelected - это свойство.
+            </summary>
+            <param name="propertyName">Название свойства для обновления</param>
+        </member>
+        <member name="T:SolutionLib.ViewModels.Base.RelayCommand`1">
+            <summary>
+            Команда, единственная цель которой - 
+            передать свои функции другим объектам 
+            путем вызова делегатов. Возвращаемое 
+            значение по умолчанию для метода CanExecute - 'true'.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.RelayCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="execute"></param>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.RelayCommand`1.#ctor(System.Action{`0},System.Predicate{`0})">
+            <summary>
+            Creates a new command.
+            </summary>
+            <param name="execute">The execution logic.</param>
+            <param name="canExecute">The execution status logic.</param>
+        </member>
+        <member name="E:SolutionLib.ViewModels.Base.RelayCommand`1.CanExecuteChanged">
+            <summary>
+            Eventhandler to re-evaluate whether this command can execute or not
+            </summary>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.RelayCommand`1.CanExecute(System.Object)">
+            <summary>
+            Determine whether this pre-requisites to execute this command are given or not.
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SolutionLib.ViewModels.Base.RelayCommand`1.Execute(System.Object)">
+            <summary>
+            Execute the command method managed in this class.
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="T:SolutionLib.Views.TreeViewItemSelector">
+            <summary>
+            Реализует селектор DataTemplate для TreeViewItems. Это необходимо,
+            поскольку записи файлов НЕ МОГУТ иметь дочерние элементы, а все
+            другие типы элементов могут иметь дочерние записи под собой.
+            
+              Использование: 
+              - Создание экземпляра селектора шаблона в ResourceDictionary 
+              - Создание экземпляра: 
+              - DataTemplate (для файлов) и 
+              - HierarchicalDataTemplate (элементы с дочерними элементами) в ResourceDictionary
+              
+              - Назначьте каждый шаблон для свойств <see cref = "P:SolutionLib.Views.TreeViewItemSelector.FileTemplate" />
+              и <see cref = "P:SolutionLib.Views.TreeViewItemSelector.ChildrenItemTemplate" /> ниже.
+              
+            - Назначьте <see Cref = "TreeViewItemSelector" /> объекту TreeView ItemTemplateSelector = "{StaticResource TreeItemSelector}"
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Views.TreeViewItemSelector.FileTemplate">
+            <summary>
+            Получает / задает свойство, содержащее шаблон для элементов,
+            которые не могут иметь дочерних элементов (файлов) в TreeView.
+            </summary>
+        </member>
+        <member name="P:SolutionLib.Views.TreeViewItemSelector.ChildrenItemTemplate">
+            <summary>
+            Получает / задает свойство, содержащее шаблон для элементов,
+            которые могут иметь дочерние элементы (папка, проект) в TreeView.
+            </summary>
+        </member>
+        <member name="M:SolutionLib.Views.TreeViewItemSelector.SelectTemplate(System.Object,System.Windows.DependencyObject)">
+            <summary>
+            Переопределяет стандартный метод, который вызывается, когда платформа
+            запрашивает правильный шаблон, который будет использоваться для данного
+            объекта ViewModel.
+            </summary>
+            <param name="item"></param>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

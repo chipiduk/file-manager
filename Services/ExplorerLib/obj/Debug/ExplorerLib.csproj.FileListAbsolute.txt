@@ -1,0 +1,8 @@
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\bin\Debug\ExplorerLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\bin\Debug\ExplorerLib.pdb
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.csprojAssemblyReference.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.Local.Strings.resources
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.csproj.GenerateResource.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.csproj.CoreCompileInputs.cache
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.dll
+C:\Users\Evgeniy-boss\Desktop\FileManager\Services\ExplorerLib\obj\Debug\ExplorerLib.pdb

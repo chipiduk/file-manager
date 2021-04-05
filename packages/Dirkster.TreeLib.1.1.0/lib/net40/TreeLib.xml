@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TreeLib</name>
+    </assembly>
+    <members>
+        <member name="T:TreeLib.BreadthFirst.LevelOrder`2">
+            <summary>
+            Implements a Generic class that can traverse a tree with tree nodes of type
+            <typeparamref name="T"/> and supports invoking calls on each node via
+            Generic method in the Traversal method.
+            </summary>
+            <typeparam name="TRESULT"></typeparam>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:TreeLib.BreadthFirst.LevelOrder`2.Traverse(`1,System.Func{`1,System.Collections.Generic.IEnumerable{`1}},`0,System.Func{`0,`1,`0},System.Action{`1},System.Func{`0,System.Exception,`1,`0})">
+             <summary>
+             http://urosv.blogspot.de/2011/04/iterative-binary-tree-traversal.html
+             C/C++ Blog Post by: Uros Vidojevic
+            
+             Levelorder traversal implementation is very similar
+             to the preorder implementation, with the most significant difference
+             that the <seealso cref="T:System.Collections.Generic.Queue`1"/> is used instead of a
+             <seealso cref="T:System.Collections.Generic.Stack`1"/>.
+             </summary>
+             <param name="root">This object points at the root of the tree structure.</param>
+             <param name="children">This Generic method implements a way of enumerating all
+             childrens for the root or current node in the traversal.</param>
+             <param name="ret">This object contains result data of the traversal and should
+             have been initialized by the caller.</param>
+             <param name="process">This method accepts the current node and the result object
+             <paramref name="ret"/> as aparameter to the required processing on each node.</param>
+             <param name="progress">Optional generic method accepts the cuurent node as parameter
+             and implements a progress indicator.</param>
+             <param name="exception">Optional generic method accepts the current node <typeparamref name="T"/>
+             and result object <paramref name="ret"/> as parameter to implement exception handling
+             for browsing of children.</param>
+        </member>
+        <member name="T:TreeLib.BreadthFirst.Traverse">
+             <summary>
+             http://urosv.blogspot.de/2011/04/iterative-binary-tree-traversal.html
+             C/C++ Blog Post by: Uros Vidojevic
+            
+             Levelorder traversal implementation is very similar
+             to the preorder implementation, with the most significant difference
+             that now the <seealso cref="T:System.Collections.Generic.Queue`1"/> is used instead of a
+             <seealso cref="T:System.Collections.Generic.Stack`1"/>.
+             </summary>
+             <summary>
+             Code is based on:
+             http://urosv.blogspot.de/2011/04/iterative-binary-tree-traversal.html
+             C/C++ Blog Post by: Uros Vidojevic (2010)
+            
+             </summary>
+        </member>
+        <member name="M:TreeLib.BreadthFirst.Traverse.LevelOrder``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+             <summary>
+             Provides a Generic implementaion for a DepthFirst (Pre-Order)
+             Traversal algorithm, which can be used to traverse a n-ary tree
+             via foreach(var item in collection){ ... }
+             
+             This method expects a tree with one root node
+             (e.g. Explorer in Windows).
+            
+             Levelorder traversal implementation is very similar
+             to the preorder implementation, with the most significant difference
+             that now the <seealso cref="T:System.Collections.Generic.Queue`1"/> is used instead of a
+             <seealso cref="T:System.Collections.Generic.Stack`1"/>.
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="root"></param>
+             <param name="children"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TreeLib.BreadthFirst.Traverse.LevelOrder``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Provides a Generic implementaion for a DepthFirst (Pre-Order)
+            Traversal algorithm, which can be used to traverse a n-ary tree
+            via foreach(var item in collection){ ... }
+            
+            This method expects a tree with more than one root node
+            (e.g. Database Explorer in VS when connecting to more than one database).
+            
+            Levelorder traversal implementation is very similar
+            to the preorder implementation, with the most significant difference
+            that now the <seealso cref="T:System.Collections.Generic.Queue`1"/> is used instead of a
+            <seealso cref="T:System.Collections.Generic.Stack`1"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="root"></param>
+            <param name="children"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TreeLib.Depthfirst.PostOrder`2">
+            <summary>
+            Implements a Generic class that can traverse a tree with tree nodes of type
+            <typeparamref name="T"/> and supports invoking calls on each node via
+            Generic method in the Traversal method.
+            </summary>
+            <typeparam name="TRESULT"></typeparam>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:TreeLib.Depthfirst.PostOrder`2.Traverse(`1,System.Func{`1,System.Collections.Generic.IEnumerable{`1}},`0,System.Func{`0,`1,`0},System.Action{`1},System.Func{`0,System.Exception,`1,`0})">
+             <summary>
+             This code shows the first development version of the PostOrder
+             traversal algorithm as published by Dave Remy in his 2010 RemLog blog at:
+             https://blogs.msdn.microsoft.com/daveremy/2010/03/16/non-recursive-post-order-depth-first-traversal-in-c/
+            
+             </summary>
+             <param name="root">This object points at the root of the tree structure.</param>
+             <param name="children">This Generic method implements a way of enumerating all
+             childrens for the root or current node in the traversal.</param>
+             <param name="ret">This object contains result data of the traversal and should
+             have been initialized by the caller.</param>
+             <param name="process">This method accepts the current node and the result object
+             <paramref name="ret"/> as aparameter to the required processing on each node.</param>
+             <param name="progress">Optional generic method accepts the cuurent node as parameter
+             and implements a progress indicator.</param>
+             <param name="exception">Optional generic method accepts the current node <typeparamref name="T"/>
+             and result object <paramref name="ret"/> as parameter to implement exception handling
+             for browsing of children.</param>
+        </member>
+        <member name="M:TreeLib.Depthfirst.PostOrder`2.PeekOrDefault(System.Collections.Generic.Stack{`1})">
+            <summary>
+            Return the top element of stack or null if the Stack is empty.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreeLib.Depthfirst.PostOrder`2.PushReverse(System.Collections.Generic.Stack{`1},`1[])">
+            <summary>
+            Push all children of a given node in reverse order into the
+            <seealso cref="T:System.Collections.Generic.Stack`1"/> <paramref name="s"/>.
+            
+            Use this to traverse the tree from left to right.
+            </summary>
+            <param name="s"></param>
+            <param name="list"></param>
+        </member>
+        <member name="T:TreeLib.Depthfirst.PreOrder`2">
+            <summary>
+            Implements a Generic class that can traverse a tree with tree nodes of type
+            <typeparamref name="T"/> and supports invoking calls on each node via
+            Generic method in the Traversal method.
+            </summary>
+            <typeparam name="TRESULT"></typeparam>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:TreeLib.Depthfirst.PreOrder`2.Traverse(`1,System.Func{`1,System.Collections.Generic.IEnumerable{`1}},`0,System.Func{`0,`1,`0},System.Action{`1},System.Func{`0,System.Exception,`1,`0})">
+             <summary>
+             This code shows the first development version of the PreOrder
+             traversal algorithm as published by Dave Remy in his 2010 RemLog blog at:
+             https://blogs.msdn.microsoft.com/daveremy/2010/03/16/non-recursive-post-order-depth-first-traversal-in-c/
+            
+             </summary>
+             <param name="root">This object points at the root of the tree structure.</param>
+             <param name="children">This Generic method implements a way of enumerating all
+             childrens for the root or current node in the traversal.</param>
+             <param name="ret">This object contains result data of the traversal and should
+             have been initialized by the caller.</param>
+             <param name="process">This method accepts the current node and the result object
+             <paramref name="ret"/> as aparameter to the required processing on each node.</param>
+             <param name="progress">Optional generic method accepts the cuurent node as parameter
+             and implements a progress indicator.</param>
+             <param name="exception">Optional generic method accepts the current node <typeparamref name="T"/>
+             and result object <paramref name="ret"/> as parameter to implement exception handling
+             for browsing of children.</param>
+        </member>
+        <member name="T:TreeLib.Depthfirst.Traverse">
+             <summary>
+             Developed out of the combined posts
+             1) Published by Dave Remy in his 2010 RemLog blog at:
+                https://blogs.msdn.microsoft.com/daveremy/2010/03/16/non-recursive-post-order-depth-first-traversal-in-c/
+            
+             2) With the "Generic Tree and Linked List Traversal in C#" post by Mike Adelson
+                http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+             
+             http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+             https://github.com/madelson/MedallionUtilities/blob/master/MedallionCollections/Traverse.cs
+             by Mike Adelson
+             </summary>
+             <summary>
+             Developed out of the combined posts
+             1) Published by Dave Remy in his 2010 RemLog blog at:
+                https://blogs.msdn.microsoft.com/daveremy/2010/03/16/non-recursive-post-order-depth-first-traversal-in-c/
+            
+             2) With the "Generic Tree and Linked List Traversal in C#" post by Mike Adelson
+                http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+             
+             http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+             https://github.com/madelson/MedallionUtilities/blob/master/MedallionCollections/Traverse.cs
+             by Mike Adelson
+             </summary>
+            <summary>
+            Code is based on this source:
+            http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+            https://github.com/madelson/MedallionUtilities/blob/master/MedallionCollections/Traverse.cs
+            by Mike Adelson
+            </summary>
+            <summary>
+            Code is based on this source:
+            http://www.codeducky.org/easy-tree-and-linked-list-traversal-in-c/
+            https://github.com/madelson/MedallionUtilities/blob/master/MedallionCollections/Traverse.cs
+            by Mike Adelson
+            </summary>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.PostOrder``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Provides a Generic implementaion for a DepthFirst (Pre-Order)
+            Traversal algorithm, which can be used to traverse a n-ary tree
+            via foreach(var item in collection){ ... }
+            
+            This method expects a tree with one root node
+            (e.g. Explorer in Windows).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="root"></param>
+            <param name="children"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.PeekOrDefault1``1(System.Collections.Generic.Stack{``0})">
+            <summary>
+            Return the top element of stack or null if the Stack is empty.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.PushReverse``1(System.Collections.Generic.Stack{System.Collections.Generic.IEnumerator{``0}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Push all children of a given node in reverse order into the
+            <seealso cref="T:System.Collections.Generic.Stack`1"/> <paramref name="s"/>.
+            
+            Use this to traverse the tree from left to right.
+            </summary>
+            <param name="s"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.PushNonReverse``1(System.Collections.Generic.Stack{System.Collections.Generic.IEnumerator{``0}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Push all children of a given node in givrn order into the
+            <seealso cref="T:System.Collections.Generic.Stack`1"/> <paramref name="s"/>.
+            
+            Use this to traverse the tree from right to left.
+            </summary>
+            <param name="s"></param>
+            <param name="list"></param>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.PostOrder``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Provides a Generic implementaion for a Post-Order (DepthFirst)
+            Traversal algorithm, which can be used to traverse a n-ary tree
+            via foreach(var item in collection){ ... }
+            
+            This method expects a tree with more than one root node
+            (e.g. Database Explorer in VS when connecting to more than one database).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="root"></param>
+            <param name="children"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.Preorder``1(``0,System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Provides a Generic implementaion for a Preorder (DepthFirst) tree
+            traversal algorithm, which can be used to traverse a n-ary tree
+            via foreach(var item in collection){ ... }
+            
+            This method expects a tree with one root node
+            (e.g. Explorer in Windows).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="root"></param>
+            <param name="children"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TreeLib.Depthfirst.Traverse.Preorder``1(System.Collections.Generic.IEnumerator{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Provides a Generic implementaion for a Preorder (DepthFirst) tree
+            traversal algorithm, which can be used to traverse a n-ary tree
+            via foreach(var item in collection){ ... }
+            
+            This method expects a tree with multiple root nodes
+            (e.g. Explorer in Windows).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="root"></param>
+            <param name="children"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TreeLib.Models.LevelOrderCursor`1">
+            <summary>
+            This class implements a simple traversal cursor to indicate
+            the next element being enumerated and its level.
+            (see enumeration function in <seealso cref="T:TreeLib.BreadthFirst.Traverse"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:TreeLib.Models.LevelOrderCursor`1.#ctor(System.Int32,`0)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="level"></param>
+            <param name="node"></param>
+        </member>
+        <member name="M:TreeLib.Models.LevelOrderCursor`1.#ctor">
+            <summary>
+            Hidden class constructor.
+            </summary>
+        </member>
+        <member name="P:TreeLib.Models.LevelOrderCursor`1.Level">
+            <summary>
+            The level indicates the zero based level at which the
+            corresponding <seealso cref="P:TreeLib.Models.LevelOrderCursor`1.Node"/> is contained within
+            the tree.
+            </summary>
+        </member>
+        <member name="P:TreeLib.Models.LevelOrderCursor`1.Node">
+            <summary>
+            Indicates the tree node that is visited when this class
+            is returned from an IEnumerable&gt;T> function.
+            </summary>
+        </member>
+    </members>
+</doc>
